@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+ <title> foodmaza </title>
+ <head>
+ <link href='https://fonts.googleapis.com/css?family=Combo' rel='stylesheet'> </head>
+ <style>
+ body, html {
+  height: 100%;
+  margin:0;
+  font-family: 'Combo';
+ }
+ .tab{
+   overflow: hidden;
+   border: 1px solid #010104;
+   background-color: #010104;
+   position: top;
+
+ }
+ .tab button {
+   background-color:#010104 ;
+   float: center;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   padding: 14px 16px;
+   transition: 0.3s;
+   font-size: 17px;
+   color: white;
+
+ }
+ .tab button:hover {
+   background-color: red;
+ }
+ .tab button.active {
+   background-color: red;
+ }
+ .dropdown {
+   float:right;
+ }
+
+ .dropdown .dropbtn {
+   font-size: 16px;
+   border: none;
+   outline: none;
+   color: white;
+   padding: 14px 16px;
+   background-color: inherit;
+   margin: 0;
+ }
+ .dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: black;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 6;
+ }
+ .dropdown:hover .dropbtn {
+   background-color: red;
+ }
+ .dropdown-content tab:hover {
+   background-color: red;
+ }
+
+ .dropdown:hover .dropdown-content {
+   display: block;
+ }
+ .bg-image {
+   background-image:  url('{{url_for('static', filename='ch1.jpg')}}');
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+   filter: blur(0px);
+  -webkit-filter: blur(0px);
+   height: 170%;
+   background-position: center;
+}
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.8); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 20%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  padding: 20px;
+  text-align: center;
+}
+.bg-text1 {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.8); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 70%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  height:50%;
+  padding: 60px;
+  text-align: center;
+}
+.confirm{
+  position:absolute;
+  top: 110%;
+  left:50%;
+  width:40%;
+  height:15%;
+  background-color:#F33183;
+   color: white;
+   cursor: pointer;
+   padding: 20px 24px;
+   margin: 8px 0;
+   border: none;
+   font-size:18px;
+}
+.cancel{
+  position:absolute;
+  top: 110%;
+  left:5%;
+  width:40%;
+  height:15%;
+  background-color: red;
+   color: white;
+   cursor: pointer;
+   padding: 20px 24px;
+   margin: 8px 0;
+   border: none;
+   font-size:18px
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+<body>
+<div class="tab">
+  <a href="/login"><button type="button">Home</button></a>
+   <a  href="/aboutus"><button  type="button">About</button></a>
+   <a href="/menus"><button type="button">Menu</button></a>
+   <a href="contact.html"><button type="button">Contact us</button></a>
+    <a href="/outlet"><button type="button">Our Outlets</button></a>
+    <a href="/order_food"><button class="active" type="button">Order Food Order</button></a>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <div class ="dropdown">
+    <button class='dropbtn'type="button" onclick="myMenu()">Welcome {{name}}</button>
+    <div id="myDropdown" class="dropdown-content">
+     <a href="/acc_detail"><button>Account details</button></a><br>
+     <a href="/index"><button>LogOut</button></a>
+   </div>
+ </div>
+</div>
+ <div class="bg-image"></div>
+ <div class="bg-text">
+   <h1 style="font-size:30px; color:red;">JUST ONE STEP TO GET YOUR FAVORITE MEAL BOX</h1></div>
+ <div class="bg-text1">
+   <table>
+     <tr>
+       <th style="position:absolute; top:10%;  font-size:30px; color:green;">FOOD ITEM</th>
+       <th style="position:absolute; top:10%; left:30%;  font-size:30px; color:green;">Quantity</th><br>
+       <th style="position:absolute; top:10%; left:50%; font-size:30px; color:green;">Price per piece</th><br>
+       <th style="position:absolute;top:10%; left:80%; font-size:30px; color:green;"> Total price </th><br>
+     </tr>
+
+    {% for item in item %}
+      <tr>
+        <td  style="position: inherit; top:20%;font-size:20px; color:white;">{{item.food_item}}</td>
+        <td  style="position:absolute;  font-size:20px; left:35%; color:white;">{{item.quantity}}</td>
+        <td  style="position:absolute; left:55%; font-size:20px; color:white;">{{item.price}}</td>
+        <td  style="position:absolute; left:85%; font-size:20px; color:white;">{{item.tprice}}</td>
+      </tr>
+  {% endfor%}
+  </table>
+  <h1 style="position:absolute; top:70%; left:70%;">Grand total:{{grand}}</h1>
+
+   <div>
+<button id="myBtn" onclick="myFunction()" class="confirm">CONFIRM YOUR ORDER</button>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-body">
+              <span class="close">&times;</span>
+              <p style=" font-family:'Arial'; font-size:25px; color:#DC143C"><b>{{message}}</b></p>
+             </div>
+               <a href="/login"<button  type="button" style=" width:25%; height:15%; background-color:#F33183; color: white; cursor: pointer;padding: 10px 14px; margin: 8px 0;border: none;font-size:25px">OK</buton></a>
+
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<a href="/order_food"><button  class="cancel" type="button">CANCEL</button><a>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+</script>

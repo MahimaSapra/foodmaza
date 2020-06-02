@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+ <title> foodmaza </title>
+ <head>
+  </head>
+ <style>
+ body, html {
+  height: 100%;
+  margin:0;
+  font-family: 'Combo';
+ }
+ .tab{
+   overflow: hidden;
+   border: 1px solid #010104;
+   background-color: #010104;
+   position: top;
+
+ }
+ .tab button {
+   background-color:#010104 ;
+   float: center;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   padding: 14px 16px;
+   transition: 0.3s;
+   font-size: 17px;
+   color: white;
+
+ }
+ .tab button:hover {
+   background-color: red;
+ }
+ .tab button.active {
+   background-color: red;
+ }
+ .dropdown {
+   float:right;
+ }
+
+ .dropdown .dropbtn {
+   font-size: 16px;
+   border: none;
+   outline: none;
+   color: white;
+   padding: 14px 16px;
+   background-color: inherit;
+   margin: 0;
+ }
+ .dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: black;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 6;
+ }
+ .dropdown:hover .dropbtn {
+   background-color: red;
+ }
+ .dropdown-content tab:hover {
+   background-color: red;
+ }
+
+ .dropdown:hover .dropdown-content {
+   display: block;
+ }
+ .bg-image {
+   background-image: url('{{url_for('static', filename='burger.jpg')}}');
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+   filter: blur(0px);
+  -webkit-filter: blur(0px);
+   height: 170%;
+   background-position: center;
+}
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.8); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 50%;
+  padding: 20px;
+  text-align: center;
+}
+.tab1 {
+  float: left;
+  border: 1px solid black;
+  background-color: black;
+  width: 30%;
+  height: 300px;
+  position:absolute;
+  top:40%;
+  width:20%;
+}
+
+/* Style the buttons inside the tab */
+.tab1 button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+  color:white;
+}
+
+/* Change background color of buttons on hover */
+.tab1 button:hover {
+  background-color: #FE6807;
+  color:black;
+}
+
+/* Create an active/current "tab button" class */
+.tab1 button.active {
+  background-color: #FE6807;
+}
+
+/* Style the tab content */
+.tabcontent {
+
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.8); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 70%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 40%;
+  height: 60%;
+  padding: 20px;
+  text-align: center;
+}
+</style>
+<body>
+<div class="tab">
+  <a href="/login"><button type="button">Home</button></a>
+   <a  href="/aboutus"><button  type="button">About</button></a>
+   <a href="/menus"><button type="button">Menu</button></a>
+   <a href="contact.html"><button type="button">Contact us</button></a>
+    <a href="/outlet"><button type="button">Our Outlets</button></a>
+    <a href="/order_food"><button type="button">Online Food Order</button></a>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <div class ="dropdown">
+    <button class='dropbtn'type="button" onclick="myMenu()">Welcome {{name}}</button>
+    <div id="myDropdown" class="dropdown-content">
+     <a href="/acc_detail"><button>Account details</button></a><br>
+     <a href="/index"><button>LogOut</button></a>
+   </div>
+ </div>
+
+ </div>
+
+ <div class="bg-image"></div>
+ <div class="bg-text">
+   <h1 style="font-size:50px; color: #FE6807;"> ACCOUNT DETAILS</h1></div>
+ <div class="tab1">
+  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">About me</button>
+  <button class="tablinks" onclick="openCity(event, 'Paris')">Address Details</button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Past orders</button>
+</div>
+<div id="London" class="tabcontent">
+<h3><b style="font-size:30px; color: #EE97BB; font-face:face=verdana">NAME:</b>&nbsp;&nbsp;&nbsp;&nbsp; {{cname}}</h3><br>
+<h3><b style="font-size:30px; color: #EE97BB; font-face:face=verdana">NUMBER:</b>&nbsp;&nbsp;&nbsp;&nbsp; {{number}}</h3><br>
+<h3><b style="font-size:30px; color: #EE97BB; font-face:face=verdana">E-MAIL:</b>&nbsp;&nbsp;&nbsp;&nbsp; {{mail}}</h3><br>
+<h3><b style="font-size:30px; color: #EE97BB; font-face:face=verdana">USERNAME:</b>&nbsp;&nbsp;&nbsp;&nbsp; {{name}}</h3>
+
+</div>
+
+<div id="Paris" class="tabcontent">
+ <h3><b style="font-size:30px; color:#EE97BB; font-face:face=verdana">Address:</b>&nbsp;&nbsp;&nbsp;&nbsp; {{add}}</h3><br><br>
+ <button onclick="myFunction()"; type="button" style="width:40%;height:20%; background-color:#F1337B;color:white;font-size:20px;">UPDATE ADDRESS</button><br>
+ <br><br><form name="up_add" id='add'  method="post" action="/acc_detail">
+   <label  for="address" style="font-size:23px;">Enter new address:</label>
+   <input type="text" name="ad" required><br><br>
+   <button type="submit" onclick="/acc_detail" style="width:60%;height:60%;padding:20px;background-color:#3077FF;color:white;font-size:20px;">Yes,Update this address</button>
+   {% with messages = get_flashed_messages() %}
+     {% if messages %}
+       {% for message in messages %}
+           <h1 style="font-size:20px;position:absolute; top:80%; left: 35%; color:red;">{{ message }}</h1>
+       {% endfor %}
+     {% endif %}
+   {% endwith %}
+ </form>
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h3><b style="font-size:30px; color:#EE97BB; font-face:face=verdana">Past Orders:</b></h3>
+  <h3><b style="font-size:30px; color:#EE97BB; font-face:face=verdana">Date:</b>&nbsp;&nbsp;&nbsp;&nbsp; {{date}}</h3>
+  <h3><b style="font-size:30px; color:#EE97BB; font-face:face=verdana">Item & Quantity:</b></h3><br>
+  <table>
+    <tr>
+      <th style="position:absolute; top:40%;left:10%; font-size:25px; color:#7DCEA0  ;">ITEM</th>
+      <th style="position:absolute; top:40%; left:50%;  font-size:25px; color:#7DCEA0   ;">Quantity</th><br>
+    {% for item in item %}
+      <tr>
+        <td  style="position:inherit; top:50%; left:50%;font-size:20px; color:white;">{{item.food_item}}</td>
+        <td  style="position:absolute;  font-size:20px; left:60%; color:white;">{{item.quantity}}</td>
+      </tr>
+  {% endfor%}
+
+</div>
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+function myFunction() {
+  var x = document.getElementById("add");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+</body>
+</html>

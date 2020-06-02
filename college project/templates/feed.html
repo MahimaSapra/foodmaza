@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+ <title> foodmaza </title>
+ <head>
+      <link href='https://fonts.googleapis.com/css?family=Eagle Lake' rel='stylesheet'>
+
+ </head>
+ <div class="tab">
+     <a href="/index"><button  type="button">Home</button></a>
+    <a href="/about"><button  type="button">About</button></a>
+    <a href="/menu"><button type="button">Menu</button></a>
+    <a href="contact.html"><button type="button">Contact Us</button></a>
+     <a href="/outlets"><button class="active" type="button">Our Outlets</button></a>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+
+    <a href="/log"><button  type="button">LOGIN OR SIGN UP</button></a>
+
+  </div>
+
+<style>
+body, html {
+ height: 100%;
+ margin: 0;
+ font-family: 'Eagle Lake';
+}
+
+.tab{
+  overflow: hidden;
+  border: 1px solid #010104;
+  background-color: #010104;
+  position: top;
+
+}
+.tab button {
+  background-color:#010104 ;
+  float: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  color: white;
+}
+.tab button:hover {
+  background-color: red;
+}
+.tab button.active {
+
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  background-color: red;
+}
+.bg-image {
+  background-image: url('{{url_for('static', filename='rest.jpg')}}');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  filter: blur(3px);
+ -webkit-filter: blur(3px);
+ height: 210%;
+ background-position: center;
+}
+.bg-text {
+ background-color: rgb(0,0,0); /* Fallback color */
+ background-color: rgba(0,0,0, 0.8); /* Black w/opacity/see-through */
+ color: white;
+ font-weight: bold;
+ border: 3px solid #f1f1f1;
+ position: absolute;
+ top: 23%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ z-index: 2;
+ width: 80%;
+ padding: 20px;
+ text-align: center;
+}
+.bg-text2{
+ background-color: rgb(0,0,0); /* Fallback color */
+ background-color: rgba(0,0,0, 0.8); /* Black w/opacity/see-through */
+ color: white;
+ font-weight: bold;
+ border: 3px solid #f1f1f1;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ z-index: 2%;
+ width: 50%;
+ height: 15%;
+ padding: 20px;
+ text-align: center;
+}
+.bg-text3{
+ background-color: rgb(0,0,0); /* Fallback color */
+ background-color: rgba(0,0,0, 0.8); /* Black w/opacity/see-through */
+ color: white;
+ font-weight: bold;
+ border: 3px solid #f1f1f1;
+ position: absolute;
+ top: 140%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ z-index: 2%;
+ width: 50%;
+ height: 140%;
+ padding: 20px;
+ text-align: center;
+}
+</style>
+<div class="bg-image"></div>
+<div class="bg-text">
+  <h1 style="font-size:50px; color:red;">OUR OUTLETS</h1>
+</div>
+<div class="bg-text2">
+  <h1 style="font-size:25px; color:#F33174;">You can also locate us on Map</h1>
+  <a href="/map">Click me to find foodmaza outlet near you</a>
+</div>
+<div class="bg-text3">
+  <h1 style="font-size:20px; color:#F3B831;"><b>1.Connaught Place, New Delhi</h1>
+  <h2 style="font-size:15px;"> Z-70, Shankar Market, Block Z, Connaught Place, New Delhi, Delhi 110001</h2>
+  <h1 style="font-size:20px; color:#F3B831;"><b>2.Faridabad, Haryana</h1>
+  <h2 style="font-size:15px;">Shop No.72, Huda Market, Sector 31, Faridabad 121004</h2>
+  <h1 style="font-size:20px; color:#F3B831;"><b>3.Jalandhar, Punjab</h1>
+  <h2 style="font-size:15px;"> SCO 7, New Jawahar Nagar Market Rd, Radio Colony, Punjab 144003</h2>
+  <h1 style="font-size:20px; color:#F3B831;"><b>4.Guwahati, Assam</h1>
+  <h2 style="font-size:15px;">Krishna Market, GS Rd, GMC Ward Number 96, Guwahati, Assam 781006</h2>
+  <h1 style="font-size:20px; color:#F3B831;"><b>5.Jaipur, Rajasthan</h1>
+  <h2 style="font-size:15px;">Bhawani Singh Rd, Rambagh, Jaipur, Rajasthan 302005</h2>
+  <h1 style="font-size:20px; color:#F3B831;"><b>6.Shimla, Himachal Pradesh</h1>
+  <h2 style="font-size:15px;">4, Mall Rd, Middle Bazar, The Mall, Shimla, Himachal Pradesh 171001</h2>
+  <h1 style="font-size:20px; color:#F3B831;"><b>7.Mumbai, Maharashtra</h1>
+  <h2 style="font-size:15px;"> B-7, Morya Bluemoon Building, Ground Floor, New Link Rd, Andheri West, Mumbai, Maharashtra 400053</h2>
+  <h1 style="font-size:20px; color:#F3B831;"><b>8. Lucknow, Uttar Pradesh</h1>
+  <h2 style="font-size:15px;"> 2/5 Near--Mithaiwala Chauraha Vivek Khand, Gomti Nagar, Lucknow, Uttar Pradesh 226010</h2>
+  <h1 style="font-size:20px; color:#F3B831;"><b>9. Kolkata, West Bengal</h1>
+  <h2 style="font-size:15px;"> Uniworth House, 6, Gurusaday Dutta Rd, Ballygunge, Kolkata, West Bengal 700019</h2>
+  <h1 style="font-size:20px; color:#F3B831;"><b>10. Hyderabad, Telangana</h1>
+  <h2 style="font-size:15px;"> 304, Nehru Outer Ring Rd, Financial District, Gachibowli, Hyderabad, Telangana 500032</h2>
+  <h1 style="font-size:20px; color:#F3B831;"><b>11. Banglore, Karnataka</h1>
+  <h2 style="font-size:15px;">Vivanta Bengaluru, 66, Residency Rd, Bengaluru, Karnataka 560025</h2>
+
+</div>

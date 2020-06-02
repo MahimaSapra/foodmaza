@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+ <title> foodmaza </title>
+ <head>
+ <link href='https://fonts.googleapis.com/css?family=Combo' rel='stylesheet'> </head>
+ <style>
+ body, html {
+  height: 100%;
+  margin:0;
+  font-family: 'Combo';
+ }
+ .tab{
+   overflow: hidden;
+   border: 1px solid #010104;
+   background-color: #010104;
+   position: top;
+
+ }
+ .tab button {
+   background-color:#010104 ;
+   float: center;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   padding: 14px 16px;
+   transition: 0.3s;
+   font-size: 17px;
+   color: white;
+
+ }
+ .tab button:hover {
+   background-color: red;
+ }
+ .tab button.active {
+   background-color: red;
+ }
+ .dropdown {
+   float:right;
+ }
+
+ .dropdown .dropbtn {
+   font-size: 16px;
+   border: none;
+   outline: none;
+   color: white;
+   padding: 14px 16px;
+   background-color: inherit;
+   margin: 0;
+ }
+ .dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: black;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 6;
+ }
+ .dropdown:hover .dropbtn {
+   background-color: red;
+ }
+ .dropdown-content tab:hover {
+   background-color: red;
+ }
+
+ .dropdown:hover .dropdown-content {
+   display: block;
+ }
+ .bg-image {
+   background-image: url('{{url_for('static', filename='order_food1.jpg')}}');
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+   filter: blur(3px);
+  -webkit-filter: blur(3px);
+   height: 170%;
+   background-position: center;
+}
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.8); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+  overflow:visible;
+}
+.tab1 {
+  position: absolute;
+  margin: 20px;
+  width: auto;
+  top: 30%;
+  left: 25%;
+  overflow: visible;
+  border: 1px solid #010104;
+  background-color: #010104;
+}
+
+/* Style the buttons inside the tab */
+.tab1 button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+
+
+}
+
+/* Change background color of buttons on hover */
+.tab1 button:hover {
+  background-color: #7466D1;
+}
+
+/* Create an active/current tablink class */
+.tab1 button.active {
+  background-color: #7466D1;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  }
+.margin{
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.7); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: -25%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  font-family:bookman header;
+}
+.margin1{
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.7); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: -25%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  font-family:bookman header;
+ }
+
+.margin2{
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.7); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: -45%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  font-family:bookman header;
+}
+.margin3{
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.7); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: -25%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  font-family:bookman header;
+}
+.margin4{
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.7); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: -40%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  font-family:bookman header;
+}
+.margin5{
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.7); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: -40%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  font-family:bookman header;
+}
+.margin6{
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.7); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: -40%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  height: 60%;
+  font-family:bookman header;
+}
+.alignment
+{
+    position: absolute;
+    left: 45%;
+  }
+form {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 50px;
+  position:absolute;
+  top: 90%;
+  left:5%;
+  color:red;
+  height: 60%;
+}
+
+.value-button {
+  display: inline-block;
+  border: 1px solid #ddd;
+  margin: 0px;
+  width: 40px;
+  height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 11px 0;
+  background: #eee;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.value-button:hover {
+  cursor: pointer;
+}
+
+form #decrease {
+
+  margin-right: -4px;
+  border-radius: 8px 0 0 8px;
+  background-color:inherit;
+  font-size:20px;
+}
+form #increase {
+  margin-left: -4px;
+  border-radius: 0 8px 8px 0;
+  background-color:inherit;
+}
+form #input-wrap {
+  margin: 0px;
+  padding: 0px;
+
+}
+.number{text-align: center;
+border: none;
+border-top: 1px solid #ddd;
+border-bottom: 1px solid #ddd;
+margin: 0px;
+width: 40px;
+height: 40px;}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.cart_button{
+  position:absolute;
+  top: 25%;
+  left: 30%;
+  float:center;
+  padding:20px;
+  width:500px;
+  text:bold;
+  background-color: #7466D1;
+  color: white;
+  font-size: 25px;
+  border: none;
+}
+.modal {
+  overflow: visible;/* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 6; /* Sit on top */
+  left: 25%;
+  top: 50%;
+  width: 50%; /* Full width */
+  height: 150%; /* Full height */
+  display: block;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0.4,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #FFF5EE;
+   margin: auto;
+   padding: 60px;
+   border: 1px solid #888;
+   width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+
+  padding: 10px 20px;
+  background-color: #FFF5EE;
+  color: white;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: -1}
+  to {bottom: 0; opacity: 100}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: -1}
+  to {bottom: 0; opacity: 100}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 1}
+  to {opacity: 100}
+}
+
+@keyframes fadeIn {
+  from {opacity: -1}
+  to {opacity: 100}
+}
+
+</style>
+<body>
+<div class="tab">
+  <a href="/login"><button type="button">Home</button></a>
+   <a  href="/aboutus"><button type="button">About</button></a>
+   <a href="/menus"><button type="button">Menu</button></a>
+   <a href="contact.html"><button type="button">Contact us</button></a>
+    <a href="/outlet"><button type="button">Our Outlets</button></a>
+    <a href="/order_food"><button class="active" type="button">Order Food Order</button></a>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <button type="button"></button>
+    <div class ="dropdown">
+    <button class='dropbtn'type="button" onclick="myMenu()">Welcome {{name}}</button>
+    <div id="myDropdown" class="dropdown-content">
+     <a href="/acc_detail"><button>Account details</button></a><br>
+     <a href="/index"><button>LogOut</button></a>
+   </div>
+ </div>
+
+ </div>
+
+ <div class="bg-image"></div>
+ <div class="bg-text">
+   <h1 style="font-size:40px; color:red;">ORDER FOOD ONLINE</h1> <br>
+  </div>
+  <div class="tab1">
+  <button class="tablinks" onclick="openCity(event, 'pizza')"style="color:#FFFFFF;" id="defaultOpen">Pizza</button>
+  <button class="tablinks" onclick="openCity(event, 'salads')"style="color:#FFFFFF;">Salads</button>
+  <button class="tablinks" onclick="openCity(event, 'drinks')"style="color:#FFFFFF;">Drinks</button>
+  <button class="tablinks" onclick="openCity(event, 'desserts')"style="color:#FFFFFF;">Desserts</button>
+  <button class="tablinks" onclick="openCity(event, 'chin')"style="color:#FFFFFF;">Chinese Starters</button>
+  <button class="tablinks" onclick="openCity(event, 'ind')"style="color:#FFFFFF;">Indian Starters</button>
+  <button class="tablinks" onclick="openCity(event, 'noodles')"style="color:#FFFFFF;">Noodles</button>
+</div>
+<form  method="post" action="/order">
+  <div  id="pizza" class="tabcontent">
+    <div class="margin">
+      <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Regular Bite</b> <span class="alignment">Rs.99</span></label>
+        <div style="position:absolute; left:67%;"class="value-button" id="decrease" onclick="decreaseValue('number1')" value="Decrease Value">-</div>
+        <input style="position:absolute; left:71%;" type="number"   class="number" id="number1" name='number1' value="0" />
+        <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number1')" value="Increase Value">+</div>
+      <p style="font-size: 20px; color: red;"><i>(onion/Capsicum/Tomato)</i></p>
+      <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Premium Bites</b> <span class="alignment">Rs.129</span></label>
+        <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number2')" value="Decrease Value">-</div>
+        <input style="position:absolute; left:71%;" type="number" class="number" id="number2" name='number2' value="0" />
+        <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number2')" value="Increase Value">+</div>
+        <p style="font-size: 20px; color:red;"><i>(Paneer/Chicken/Sweet Corn)</i></p>
+       <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Veggie Delight Pizza</b> <span class="alignment">Rs.139</span></label>
+      <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number3')" value="Decrease Value">-</div>
+     <input style="position:absolute; left:71%;" type="number" class="number" id="number3" name='number3' value="0" />
+     <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number3')" value="Increase Value">+</div>
+    <p style="font-size: 20px; color:red;"><i>(onion/Capsicum/Tomato)</i></p>
+   <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Exotic Veggie Bite</b> <span class="alignment">Rs.149</span></label>
+    <div style="position:absolute; left:67%;"class="value-button" id="decrease" onclick="decreaseValue('number4')" value="Decrease Value">-</div>
+    <input style="position:absolute; left:71%;" type="number"class="number" id="number4" name='number4' value="0" />
+    <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number4')" value="Increase Value">+</div>
+    <p style="font-size: 20px ; color:red;"><i>(onion/Capsicum/Tomato/Corn/Olives/Jalapenoes)</i></p>
+   </div>
+   </div>
+  <div  id="salads" class="tabcontent">
+   <div class="margin1">
+     <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Turkey Club</b> <span class="alignment">Rs.99</span></label>
+       <div  style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number5')" value="Decrease Value">-</div>
+       <input style="position:absolute; left:71%;" type="number"   class="number" id="number5" name='number5' value="0" />
+       <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number5')" value="Increase Value">+</div>
+      <p style="font-size: 16px ; color:red;"><i>(Regnerous wedge of crisp Iceburg with bacon and blue cheese crumble)</p>
+     <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Taco Salad</b> <span class="alignment">Rs.129</span></label>
+     <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number6')" value="Decrease Value">-</div>
+    <input style="position:absolute; left:71%;" type="number"   class="number" id="number6" name='number6' value="0" />
+    <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number6')" value="Increase Value">+</div>
+    <p style="font-size: 16px; color:red;"><i>(Ground beef of Chicken, Tomatoes,shreded cheese and sour cream)</p>
+   <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Spinach Berry Salad</b> <span class="alignment">Rs.145</span></label>
+   <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number7')" value="Decrease Value">-</div>
+   <input style="position:absolute; left:71%;" type="number"   class="number" id="number7" name='number7' value="0" />
+   <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number7')" value="Increase Value">+</div>
+   <p style="font-size: 16px; color:red;"><i>(Sliced Chicken breast, caramalized walnut, fresh strawberries and blueberries as served on the bed of tender spianch leaves tossed with homemade balsamic dressing)</p>
+    <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Pineapple Boat</b> <span class="alignment">Rs.149</span></label>
+    <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number8')" value="Decrease Value">-</div>
+    <input style="position:absolute; left:71%;" type="number"   class="number" id="number8" name='number8' value="0" />
+    <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number8')" value="Increase Value">+</div>
+     <p style="font-size: 16px; color:red;"><i>(A fresh Pineapple half hollowed and filled with fresh seasonal fruit and cottage cheese or sherbet served on top)</p>
+  </div>
+</div>
+<div  id="drinks" class="tabcontent">
+  <div class="margin2">
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Mojito</b> <span class="alignment">Rs.70</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number9')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number9" name='number9' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number9')" value="Increase Value">+</div><br><br>
+
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Martini</b> <span class="alignment">Rs.80</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number10')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number10"  name='number10' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number10')" value="Increase Value">+</div><br><br>
+
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Manhattan</b> <span class="alignment">Rs.110</span></label>
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number11')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number11"  name='number11' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number11')" value="Increase Value">+</div><br><br>
+
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Gin Tonic</b> <span class="alignment">Rs.149</span></label>
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number12')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number12"  name='number12' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number12')" value="Increase Value">+</div><br><br>
+</div>
+</div>
+<div  id="desserts" class="tabcontent">
+  <div class="margin3">
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Key lime pie</b> <span class="alignment">Rs.120</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number13')" value="Decrease Value">-</div>
+  <input  style="position:absolute; left:71%;" type="number"   class="number" id="number13"  name='number13' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number13')" value="Increase Value">+</div>
+
+  <p style="font-size: 20px; color:red;">(Our famous homemade key lime)</p>
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Lemon Cake</b> <span class="alignment">Rs.129</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number14')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number14"  name='number14' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number14')" value="Increase Value">+</div>
+
+  <p style="font-size: 20px; color:red;">(A Sweet delicious cake with vanilla essence and soft touch of lemon )</p>
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Cheese Cake</b> <span class="alignment">Rs.140</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number15')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number15"  name='number15' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number15')" value="Increase Value">+</div>
+  <p style="font-size: 20px; color:red;">(Sweet cake to try)</p>
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Texas Choclate cake</b> <span class="alignment">Rs.149</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number16')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number16" name='number16' value="0" />
+  <div  style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number16')" value="Increase Value">+</div>
+
+  <p style="font-size: 20px; color:red;">(With a chocolate fudge frosting)</p>
+</div>
+</div>
+<div  id="chin" class="tabcontent">
+  <div class="margin4">
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Chilly Paneer Dry/gravy</b> <span class="alignment">Rs.230</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number17')"  name='number17' value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number17" name='number17' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number17')" value="Increase Value">+</div><br><br>
+
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Veg Manchurian Dry/gravy</b> <span class="alignment">Rs.210</span></label>
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number18')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number18"  name='number18' value="0" />
+  <div  style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number18')" value="Increase Value">+</div><br><br>
+
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Honey Chilly Potato</b> <span class="alignment">Rs.210</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number19')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number19" name='number19' value="0" />
+  <div  style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number19')" value="Increase Value">+</div><br><br>
+
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Vegetable Spring Roll</b> <span class="alignment">Rs.149</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number20')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number20"  name='number20' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number20')" value="Increase Value">+</div><br><br>
+
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Cheese & Garlic Bread</b> <span class="alignment">Rs.120</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number21')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number21"  name='number21' value="0" />
+  <div style="position:absolute; left:76%;"  class="value-button" id="increase" onclick="increaseValue('number21')" value="Increase Value">+</div><br><br>
+
+</div>
+</div>
+<div  id="ind" class="tabcontent">
+  <div class="margin5">
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Paneer Tikka Tandoori</b> <span class="alignment">Rs.230</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number22')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number22"  name='number22' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number22')" value="Increase Value">+</div><br><br>
+
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Paneer Malai Tikka</b> <span class="alignment">Rs.250</span></label>
+
+  <div  style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number23')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number23"  name='number23' value="0" />
+  <div  style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number23')" value="Increase Value">+</div><br><br>
+
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Soya Malai Chaap</b> <span class="alignment">Rs.180</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number24')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number24"  name='number24' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number24')" value="Increase Value">+</div><br><br>
+
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Stuffed Mushroom Tikka </b> <span class="alignment">Rs.200</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number25')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number25"  name='number25' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number25')" value="Increase Value">+</div><br><br>
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Mushroom malai tikka</b> <span class="alignment">Rs.230</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number26')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number26"  name='number26' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number26')" value="Increase Value">+</div><br><br>
+
+</div>
+</div>
+<div  id="noodles" class="tabcontent">
+  <div class="margin6">
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Veg. Noodles</b> <span class="alignment">Rs.170</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number27')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number27"  name='number27' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number27')" value="Increase Value">+</div><br><br>
+
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Egg Soft Noodles</b> <span class="alignment">Rs.180</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number28')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number28"  name='number28' value="0" />
+  <div  style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number28')" value="Increase Value">+</div><br><br>
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Chicken Soft Noodles</b> <span class="alignment">Rs.210</span></label>
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number29')" value="Decrease Value">-</div>
+  <input  style="position:absolute; left:71%;" type="number"   class="number" id="number29" name='number29' value="0" />
+  <div  style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number29')" value="Increase Value">+</div><br><br>
+
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Prawns Noodles</b> <span class="alignment">Rs.220</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number30')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number30"   name='number30' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number30')" value="Increase Value">+</div><br><br>
+
+  <label style="font-family:bookman header;font-size: 35px; font-color: white"><b>Szechwan Noodles</b> <span class="alignment">Rs.235</span></label>
+
+  <div style="position:absolute; left:67%;" class="value-button" id="decrease" onclick="decreaseValue('number31')" value="Decrease Value">-</div>
+  <input style="position:absolute; left:71%;" type="number"   class="number" id="number31"  name='number31' value="0" />
+  <div style="position:absolute; left:76%;" class="value-button" id="increase" onclick="increaseValue('number31')" value="Increase Value">+</div><br><br>
+</div>
+</div>
+<button id="myBtn" onclick="document.getElementById('id01').style.display='block'" class="cart_button">ADD TO CART</button>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div id="id01" class="modal">
+        <div class="modal-content">
+            <div class="modal-body">
+              <span class="close">&times;</span>
+              <p style=" font-family:'Arial'; font-size:25px; color:#DC143C"><b>{{message}}</b></p>
+             </div>
+             <div class="modal-footer">
+               <button  onclick="document.getElementById('id01').style.display='none'" type="reset" style=" width:25%; height:15%; background-color:#F33183; color: white; cursor: pointer;padding: 10px 14px; margin: 8px 0;border: none;font-size:18px">Cancel</buton>
+               <a href='/checkout'><button type="button" style=" position: absolute; left:65%;width:25%; height:5%; background-color:#FF4500; color: white; cursor: pointer;padding: 8px 10px; margin: 8px 0;border: none; font-size:18px">Proceed to checkout</button></a>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</form>
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+document.getElementById("defaultOpen").click();
+function increaseValue(elementId) {
+  console.log(document.getElementById(elementId));
+  var value = parseInt(document.getElementById(elementId).value, 10);
+  value = isNaN(value) ? 0 : value;
+  value++;
+  document.getElementById(elementId).value = value;
+}
+
+function decreaseValue(elementId) {
+  var value = parseInt(document.getElementById(elementId).value, 10);
+  value = isNaN(value) ? 0 : value;
+  value < 1 ? (value = 1) : "";
+  value--;
+  document.getElementById(elementId).value = value;
+}
+function myfunc(){
+var modal = document.getElementById('id01');
+
+// Get the button that opens the modal
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+}
+
+</script>
+</body>
+</html>

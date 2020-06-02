@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+ <title> foodmaza </title>
+ <head>
+      <link href='https://fonts.googleapis.com/css?family=Artifika' rel='stylesheet'>
+
+ </head>
+ <div class="tab">
+     <a href="/index"><button type="button">Home</button></a>
+    <a href="/about"><button  type="button">About</button></a>
+    <a href="/menu"><button type="button">Menu</button></a>
+    <a href="contact.html"><button type="button">Contact Us</button></a>
+     <a href="/outlets"><button type="button">Our Outlets</button></a>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+     <button type="button"></button>
+
+      <a href="/log"><button class="active" onclick="document.getElementById('id01').style.display='block'">LOGIN OR SIGN UP</button></a>
+
+  </div>
+
+<style>
+body, html {
+ height: 100%;
+ margin: 0;
+ font-family: 'Artifika';
+}
+
+.tab{
+  overflow: hidden;
+  border: 1px solid #010104;
+  background-color: #010104;
+  position: top;
+
+}
+.tab button {
+  background-color:#010104 ;
+  float: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  color: white;
+}
+.tab button:hover {
+  background-color: red;
+}
+.tab button.active {
+
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  background-color: red;
+}
+.bg-image {
+  background-image: url('{{url_for('static', filename='sign.jpg')}}');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  filter: blur(0px);
+ -webkit-filter: blur(0px);
+ height: 180%;
+ background-position: center;
+}
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.8); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 23%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  padding: 20px;
+  text-align: center;
+}
+.sign{  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.8); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 90%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  height:100%;
+  padding: 20px;
+  text-align: center;}
+
+</style>
+<div class="bg-image"></div>
+<div class="bg-text">
+  <h1 style="font-size:50px; color:#8752B5;">SIGN UP</h1>
+</div>
+<form name="signup"  method="post" style="border:1px solid #ccc " action="/signup">
+    <div class="sign">
+    <p style="color:#73FF78">Please fill in this form to create an account.</p>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+            <h1 style="font-size:20px;position:absolute; top:10%; left: 30%">{{ message }}</h1>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <label for="name" style="color:#F54522; position: absolute;top:20%; left:20%"><b>Full Name:</b></label>
+    <input style="position:absolute; top:20%;padding: 7px 14px" type="text" placeholder="Enter Name" name="name" required><br><br>
+
+
+    <label for="contact"style="color:#F54522; position: absolute;top:30%; left:20%"><b>Contact Number:</b></label>
+    <input style="position:absolute; top:30%;padding: 7px 14px" type="tel" placeholder="Enter Contact number " name="contact" required><br><br>
+
+
+    <label for="add"style="color:#F54522; position: absolute;top:40%; left:20%"><b>Address:</b></label>
+    <input style="position:absolute; top:40%;padding: 7px 14px" type="text" placeholder="Enter Address" name="add" required><br><br>
+
+    <label for="email"style="color:#F54522; position: absolute;top:50%; left:20%"><b>Email:</b></label>
+    <input style="position:absolute; top:50%;padding: 7px 14px" type="text" placeholder="Enter Email" name="email" required><br><br>
+
+
+    <label for="u_name"style="color:#F54522; position: absolute;top:60%; left:20%"><b>Username:</b></label>
+    <input style="position:absolute; top:60%;padding: 7px 14px" type="text" placeholder="Enter Username" name="u_name" required><br><br>
+
+    <label for="psw"style="color:#F54522; position: absolute;top:70%; left:20%"><b>Password:</b></label>
+    <input style="position:absolute; top:70%;padding: 7px 14px" type="password" placeholder="Enter Password" name="psw" required><br><br>
+
+    <label for="psw-repeat"style="color:#F54522; position: absolute;top:80%; left:20%"><b>Repeat Password:</b></label>
+    <input style="position:absolute; top:80%;padding: 7px 14px" type="password" placeholder="Repeat Password" name="psw-repeat" required><br><br>
+
+    <div class="clearfix">
+          <button type="submit" onclick="/signup" style="position: absolute; top: 90%;left:0%; width:30%; height:7%; font-size: 20px; background-color: #4CAF50;color: white;padding: 14px 20px; margin: 8px 0; border: none; cursor: pointer;  width: 100%; opacity: 0.9;">Sign Up</button>
+        </div>
+
+      </div>
+</form>
