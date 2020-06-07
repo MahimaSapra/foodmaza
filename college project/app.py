@@ -2,15 +2,14 @@ from flask import Flask, render_template, request, session, url_for,redirect, fl
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import session
 from form import valid
-from flask_googlemaps import GoogleMaps
 from map1 import map
-from ordering import *
 from sqlalchemy import ForeignKey, func
 from datetime import date
 from email.mime.text import MIMEText
 import smtplib
 app=Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:postgres123@localhost/foodmaza'
+#app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:postgres123@localhost/foodmaza'
+app.config['SQLALCHEMY_DATABASE_URI']='postgres://zzsyduktgdpeze:e7eddf8c55a759c5408c9cb8e021bcc3eecd94ef2c59cde5b2e762e91bfadad8@ec2-34-230-149-169.compute-1.amazonaws.com:5432/d5je9un9pt2nev?sslmode=require'
 #engine=create_engine('postgresql://postgres:postgres123@localhost/login')
 app.secret_key='dont tell anyone'
 db=SQLAlchemy(app)
@@ -216,7 +215,39 @@ def out():
       return render_template("outlet.html",name=session.user)
     except AttributeError:
       return redirect(url_for('foodmaza'))
+@app.route("/cus", methods=['GET','POST'])
+def cus():
+      return render_template("cus.html")
+@app.route("/conus", methods=['GET','POST'])
+def conus():
+    if request.method=='POST':
+      flash("you need to login first")
+      return redirect(url_for('cus'))
 
+@app.route("/contactus", methods=['GET','POST'])
+def con():
+      return render_template("contact.html",name=session.user)
+@app.route("/contact", methods=['GET','POST'])
+def contact():
+     if request.method=='POST':
+        nam=request.form.get("name")
+        mal=request.form.get("mail")
+        sub=request.form.get("subjects")
+        me=request.form.get("msg")
+        print(mal,sub,me)
+        if sub=="booking":
+            flash("WE HAVE RECIEVED YOUR BOOKING QUERY.")
+            return redirect(url_for('con'))
+
+        elif sub=="onlinefood":
+            msg=flash("WE ARE SORRY FOR INCONVIENECE OUR EXECUTIVE WILL CONTACT YOU SOON!!")
+            return redirect(url_for('con'))
+        elif sub=="menu":
+            msg=flash("WE HAVE RECIEVED YOUR QUERY REGARDING OUR MENU!!")
+            return redirect(url_for('con'))
+        elif sub=="other":
+            msg=flash("We will get back to you soon!!")
+            return redirect(url_for('con'))
 @app.route("/order", methods=['GET','POST'])
 def ordering():
     checkout()
@@ -231,9 +262,12 @@ def check():
     grand=db.session.query(func.sum(Cart.tprice)).filter(Cart.order_id==orderid).first()[0]
     #g=(int)grand
     db.session.commit()
-    send_email()
-    flash("ORDERED SUCCSSFULLY. YOU WILL RECIEVE EMAIL FOR THE SAME")
     return render_template("checkout.html",item=item,name=session.user,grand=grand)
+@app.route("/confirm", methods=['GET','POST'])
+def confirm():
+    send_email()
+    flash("YOU HAVE ORDERED SUCCSSFULLY, YOU WILL RECIEVE E-MAIL FOR THE SAME!!")
+    return redirect(url_for('check'))
 class Menu(db.Model):
     __tablename__= 'foodmaza_menu'
     id=db.Column(db.Integer, primary_key=True)
@@ -287,7 +321,7 @@ def checkout():
          print(type(number))
          print(number)
          item_name=["Regular Bite","Premium Bites Pizza", "Veggie Delight Pizza","Exotic Veggie Bite","Turkey club Salad","Taco Salad" ,"Spinach Berry Salad","Pineapple Boat Salad","Mojito",
-               "Martini", "Manhattan", "Gin tonic", "Key lime pie","Lemon Cake","Cheese Cake","Texas Choclate Cake","Chilly Paneer","Veg Manchurian","Honey Chilly Potato",
+               "Martini", "Manhattan", "Gin tonic", "Key lime pie","Lemon Cake","Cheese Cake","Texas Choclate Cake","Chilly Paneer","Veg Manchurian","Honey Chilli Potato",
                "Vegetable Spring Roll","Cheese and Garlc Bread","Paneer Tikka Tandoori","Paneer Malai Tikka","Soya Malai Chaap","Stuffed Mushroom Tikka","Mushroom Malai Tikka",
                "Veg. Noodles","Egg Soft Noodles","Chicken Soft Noodles","Prawns Noodles","Szechwan Noodles"]
          #submission()
@@ -341,22 +375,42 @@ def acc_detail():
     if request.method=='POST':
         add= request.form.get('ad')
         print(add)
-        x=db.session.query(Customer).filter(Customer.c_uname==session.user).first()
-        x.c_address=add
-        flash("Successfully Updated")
-    customern=db.session.query(Customer.c_name).filter(Customer.c_uname==session.user).first()[0]
-    num=db.session.query(Customer.c_number).filter(Customer.c_uname==session.user).first()[0]
-    email=db.session.query(Customer.c_mail).filter(Customer.c_uname==session.user).first()[0]
-    address=db.session.query(Customer.c_address).filter(Customer.c_uname==session.user).first()[0]
-    date=db.session.query(Customer.datee).filter(Customer.c_uname==session.user).first()[0]
-    orderid=db.session.query(Customer.r_orderid).filter(Customer.c_uname==session.user).first()
-    item=db.session.query(Cart).filter(Cart.order_id==orderid).all()
-    #quantity=db.session.query(Cart.quantity).filter(Cart.order_id==orderid).all()
+        results=db.session.query(Customer).filter(Customer.c_uname.in_([session.user])).first()
+        db.session.commit()
+        if not results:
+            y=db.session.query(Sign).filter(Sign.user_name==session.user).first()
+            y.address=add
+            flash("Successfully Updated")
+        else:
+           x=db.session.query(Customer).filter(Customer.c_uname==session.user).first()
+           x.c_address=add
+           flash("Successfully Updated")
+    results=db.session.query(Customer).filter(Customer.c_uname.in_([session.user])).first()
     db.session.commit()
-    return render_template("account.html",cname=customern,number=num,mail=email,name=session.user,add=address,date=date,item=item )
+    print(results)
+    if not results:
+          customern=db.session.query(Sign.name).filter(Sign.user_name==session.user).first()[0]
+          num=db.session.query(Sign.number).filter(Sign.user_name==session.user).first()[0]
+          email=db.session.query(Sign.mail).filter(Sign.user_name==session.user).first()[0]
+          address=db.session.query(Sign.address).filter(Sign.user_name==session.user).first()[0]
+
+         #quantity=db.session.query(Cart.quantity).filter(Cart.order_id==orderid).all()
+          db.session.commit()
+          return render_template("acc.html",cname=customern,number=num,mail=email,name=session.user,add=address )
+    else:
+       customern=db.session.query(Customer.c_name).filter(Customer.c_uname==session.user).first()[0]
+       num=db.session.query(Customer.c_number).filter(Customer.c_uname==session.user).first()[0]
+       email=db.session.query(Customer.c_mail).filter(Customer.c_uname==session.user).first()[0]
+       address=db.session.query(Customer.c_address).filter(Customer.c_uname==session.user).first()[0]
+       date=db.session.query(Customer.datee).filter(Customer.c_uname==session.user).first()[0]
+       orderid=db.session.query(Customer.r_orderid).filter(Customer.c_uname==session.user).first()
+       item=db.session.query(Cart).filter(Cart.order_id==orderid).all()
+    #quantity=db.session.query(Cart.quantity).filter(Cart.order_id==orderid).all()
+       db.session.commit()
+       return render_template("account.html",cname=customern,number=num,mail=email,name=session.user,add=address,date=date,item=item )
 def send_email():
-    from_email="mahimasapra02@gmail.com"
-    from_password="2061998@mahi"
+    from_email="pythondemoproject@gmail.com"
+    from_password="*****"
     email=db.session.query(Customer.c_mail).filter(Customer.c_uname==session.user).first()[0]
     to_email=email
     subject="Foodmaza: Regarding your food order."

@@ -1,8 +1,8 @@
 import folium
 import pandas
 def map():
-    html="D:/college project/templates/feed.html"
-    data=pandas.read_csv("D:/college project/static/india.txt")
+    html="templates/feed.html"
+    data=pandas.read_csv("static/india.txt")
  #d=data.drop("accuracy",1)
     lat=list(data["latitude"])
     lon=list(data["longitude"])
@@ -25,6 +25,6 @@ def map():
     #iframe = folium.IFrame(html=html % (name, name, el), width=200, height=100)
         fg.add_child(folium.Marker(location=[lt,ln], popup=str(n),icon=folium.Icon(color='red')))
     #fill_color=color_producer(lt),color='grey', fill_opacity=0.7))
-    fg.add_child(folium.GeoJson(data=(open('D:/college project/static/india_states.json','r',encoding='utf-8-sig').read())))
+    fg.add_child(folium.GeoJson(data=(open('static/india_states.json','r',encoding='utf-8-sig').read())))
     map.add_child(fg)
-    map.save("D:/college project/templates/map_one.html")
+    map.save("templates/map_one.html")

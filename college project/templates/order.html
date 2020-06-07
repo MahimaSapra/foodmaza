@@ -389,7 +389,7 @@ input[type=number]::-webkit-outer-spin-button {
   <a href="/login"><button type="button">Home</button></a>
    <a  href="/aboutus"><button type="button">About</button></a>
    <a href="/menus"><button type="button">Menu</button></a>
-   <a href="contact.html"><button type="button">Contact us</button></a>
+   <a href="/contactus"><button type="button">Contact us</button></a>
     <a href="/outlet"><button type="button">Our Outlets</button></a>
     <a href="/order_food"><button class="active" type="button">Order Food Order</button></a>
     <button type="button"></button>
@@ -708,6 +708,23 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+}
+function myMenu() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
 }
 
 </script>

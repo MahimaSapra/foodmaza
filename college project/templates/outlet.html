@@ -9,7 +9,7 @@
      <a href="/login"><button  type="button">Home</button></a>
     <a href="/aboutus"><button  type="button">About</button></a>
     <a href="/menus"><button type="button">Menu</button></a>
-    <a href="contact.html"><button type="button">Contact Us</button></a>
+    <a href="/contactus"><button type="button">Contact Us</button></a>
     <a href="/outlet"><button class="active" type="button">Our Outlets</button></a>
     <a href="/order_food"><button type="button">Online Food Order</button></a>
      <button type="button"></button>
@@ -30,9 +30,17 @@
      <button type="button"></button>
      <button type="button"></button>
      <button type="button"></button>
-     
 
-    <a href="/log"><button  type="button">Welocome {{name}}</button></a>
+
+     <div class ="dropdown">
+     <button class='dropbtn'type="button" onclick="myMenu()">Welcome {{name}}</button>
+     <div id="myDropdown" class="dropdown-content">
+      <a href="/acc_detail"><button>Account details</button></a><br>
+      <a href="/index"><button>LogOut</button></a>
+    </div>
+
+  </div>
+ </div>
 
   </div>
 
@@ -73,6 +81,38 @@ body, html {
   font-size: 17px;
   background-color: red;
 }
+.dropdown {
+  float:right;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  margin: 0;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 6;
+}
+.dropdown:hover .dropbtn {
+  background-color: red;
+}
+.dropdown-content tab:hover {
+  background-color: red;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 .bg-image {
   background-image: url('{{url_for('static', filename='rest.jpg')}}');
   background-repeat: no-repeat;
@@ -141,26 +181,45 @@ body, html {
 </div>
 <div class="bg-text3">
   <h1 style="font-size:20px; color:#F3B831;"><b>1.Connaught Place, New Delhi</h1>
-  <h2 style="font-size:15px;"> Z-70, Shankar Market, Block Z, Connaught Place, New Delhi, Delhi 110001</h2>
+  <h2 style="font-size:15px;"> Block Z, Connaught Place, New Delhi, Delhi 110001</h2>
   <h1 style="font-size:20px; color:#F3B831;"><b>2.Faridabad, Haryana</h1>
-  <h2 style="font-size:15px;">Shop No.72, Huda Market, Sector 31, Faridabad 121004</h2>
+  <h2 style="font-size:15px;">Sector 31, Faridabad 121004</h2>
   <h1 style="font-size:20px; color:#F3B831;"><b>3.Jalandhar, Punjab</h1>
-  <h2 style="font-size:15px;"> SCO 7, New Jawahar Nagar Market Rd, Radio Colony, Punjab 144003</h2>
+  <h2 style="font-size:15px;">  Radio Colony, Punjab 144003</h2>
   <h1 style="font-size:20px; color:#F3B831;"><b>4.Guwahati, Assam</h1>
-  <h2 style="font-size:15px;">Krishna Market, GS Rd, GMC Ward Number 96, Guwahati, Assam 781006</h2>
+  <h2 style="font-size:15px;"> Guwahati, Assam 781006</h2>
   <h1 style="font-size:20px; color:#F3B831;"><b>5.Jaipur, Rajasthan</h1>
-  <h2 style="font-size:15px;">Bhawani Singh Rd, Rambagh, Jaipur, Rajasthan 302005</h2>
+  <h2 style="font-size:15px;">Jaipur, Rajasthan 302005</h2>
   <h1 style="font-size:20px; color:#F3B831;"><b>6.Shimla, Himachal Pradesh</h1>
-  <h2 style="font-size:15px;">4, Mall Rd, Middle Bazar, The Mall, Shimla, Himachal Pradesh 171001</h2>
+  <h2 style="font-size:15px;">Shimla, Himachal Pradesh 171001</h2>
   <h1 style="font-size:20px; color:#F3B831;"><b>7.Mumbai, Maharashtra</h1>
-  <h2 style="font-size:15px;"> B-7, Morya Bluemoon Building, Ground Floor, New Link Rd, Andheri West, Mumbai, Maharashtra 400053</h2>
+  <h2 style="font-size:15px;">  Mumbai, Maharashtra 400053</h2>
   <h1 style="font-size:20px; color:#F3B831;"><b>8. Lucknow, Uttar Pradesh</h1>
-  <h2 style="font-size:15px;"> 2/5 Near--Mithaiwala Chauraha Vivek Khand, Gomti Nagar, Lucknow, Uttar Pradesh 226010</h2>
+  <h2 style="font-size:15px;"> Lucknow, Uttar Pradesh 226010</h2>
   <h1 style="font-size:20px; color:#F3B831;"><b>9. Kolkata, West Bengal</h1>
-  <h2 style="font-size:15px;"> Uniworth House, 6, Gurusaday Dutta Rd, Ballygunge, Kolkata, West Bengal 700019</h2>
+  <h2 style="font-size:15px;">  Kolkata, West Bengal 700019</h2>
   <h1 style="font-size:20px; color:#F3B831;"><b>10. Hyderabad, Telangana</h1>
-  <h2 style="font-size:15px;"> 304, Nehru Outer Ring Rd, Financial District, Gachibowli, Hyderabad, Telangana 500032</h2>
+  <h2 style="font-size:15px;">  Hyderabad, Telangana 500032</h2>
   <h1 style="font-size:20px; color:#F3B831;"><b>11. Banglore, Karnataka</h1>
-  <h2 style="font-size:15px;">Vivanta Bengaluru, 66, Residency Rd, Bengaluru, Karnataka 560025</h2>
+  <h2 style="font-size:15px;"> Bengaluru, Karnataka 560025</h2>
 
 </div>
+<script>
+function myMenu() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>

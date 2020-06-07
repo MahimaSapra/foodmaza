@@ -134,32 +134,48 @@
    border: none;
    font-size:18px
 }
+cart_button{
+  position:absolute;
+  top: 25%;
+  left: 30%;
+  float:center;
+  padding:20px;
+  width:500px;
+  text:bold;
+  background-color: #7466D1;
+  color: white;
+  font-size: 25px;
+  border: none;
+}
 .modal {
-  display: none; /* Hidden by default */
+  overflow: visible;/* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  z-index: 6; /* Sit on top */
+  left: 25%;
+  top: 50%;
+  width: 50%; /* Full width */
+  height: 150%; /* Full height */
+  display: block;
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0.4,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
 }
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+  background-color: #FFF5EE;
+   margin: auto;
+   padding: 60px;
+   border: 1px solid #888;
+   width: 80%;
 }
 
 /* The Close Button */
 .close {
-  color: #aaaaaa;
+  color: white;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -171,13 +187,43 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+
+  padding: 10px 20px;
+  background-color: #FFF5EE;
+  color: white;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: -1}
+  to {bottom: 0; opacity: 100}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: -1}
+  to {bottom: 0; opacity: 100}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 1}
+  to {opacity: 100}
+}
+
+@keyframes fadeIn {
+  from {opacity: -1}
+  to {opacity: 100}
+}
 </style>
 <body>
 <div class="tab">
   <a href="/login"><button type="button">Home</button></a>
    <a  href="/aboutus"><button  type="button">About</button></a>
    <a href="/menus"><button type="button">Menu</button></a>
-   <a href="contact.html"><button type="button">Contact us</button></a>
+   <a href="/contactus"><button type="button">Contact us</button></a>
     <a href="/outlet"><button type="button">Our Outlets</button></a>
     <a href="/order_food"><button class="active" type="button">Order Food Order</button></a>
     <button type="button"></button>
@@ -227,6 +273,7 @@
   <h1 style="position:absolute; top:70%; left:70%;">Grand total:{{grand}}</h1>
 
    <div>
+<form action='/confirm'>
 <button id="myBtn" onclick="myFunction()" class="confirm">CONFIRM YOUR ORDER</button>
 {% with messages = get_flashed_messages() %}
   {% if messages %}
@@ -245,13 +292,13 @@
     {% endfor %}
   {% endif %}
 {% endwith %}
+</form>
 <a href="/order_food"><button  class="cancel" type="button">CANCEL</button><a>
 <script>
-// Get the modal
-var modal = document.getElementById("myModal");
+function myfunc(){
+var modal = document.getElementById('id01');
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -272,5 +319,5 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-
+}
 </script>
